@@ -1,0 +1,31 @@
+{
+  "zmqsi" : "zmqsi",
+  "version" : "0.1.0",
+  "private" : true,
+  "author" : { 
+    "zmqsi" : "Trevor Livingston",
+    "email" : "tlivings@gmail.com"
+  },
+  "repository" : { 
+    "type" : "git",
+    "url" : "http://github.com/trlivingston/zmqsi.git"
+  },
+  "bugs" : "http://github.com/trlivingston/zmqsi/issues",
+  "engines" : {
+    "node" : "0.10.x"
+  },
+  "dependencies" : {
+	  "zmq" : "~2.4.0",
+	  "json-schema" : "*",
+	  "uuid" : "*"
+  },
+  "devDependencies" : {
+    "mocha" : "*"
+  },
+  "scripts" : {
+    "test" : "make test"
+  },
+  "main" : "./index.js",
+  "readme" : "README.md",
+  "license" : "MIT"
+}
