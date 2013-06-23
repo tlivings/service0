@@ -32,20 +32,12 @@ describe("test", function() {
 		var testService = new TestService();
 
 		testService.bind("inproc://test", function() {
-			socket.connect("inproc://test");
-			socket.send(JSON.stringify({
-				headers : {
-					correlationId : "1234",
-					contentType : "application/json"
-				},
-				body : {
-					message : "Hello World!"
-				}
-			}));
-			socket.on("message", function(msg) {
-				msg = msg.toString();
-				var response = JSON.parse(msg);
-				console.log(response);
+			var client = new services.Client();
+
+			client.send("inproc://test", "Hello World!", function(error, result) {
+				console.log(error || result);
+				client.destroy();
+				testService.destroy();
 				next();
 			});
 		});
