@@ -36,7 +36,6 @@ describe("test", function() {
 
 			client.send("inproc://test", "Hello World!", function(error, result) {
 				console.log(error || result);
-				client.destroy();
 				testService.destroy();
 				next();
 			});

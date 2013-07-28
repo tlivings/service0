@@ -16,6 +16,7 @@
   },
   "dependencies" : {
 	  "zmq" : "~2.4.0",
+	  "msgpack" : "~0.1.10",
 	  "json-schema" : "*",
 	  "uuid" : "*"
   },
