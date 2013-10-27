@@ -20,7 +20,7 @@ describe('test', function () {
             client.send('inproc://test', 'Hello World!', function (error, headers, body) {
                 assert(!error);
                 assert(body === 'Hello');
-                testService.destroy();
+                testService.close();
                 next();
             });
         });
@@ -41,7 +41,7 @@ describe('test', function () {
             client.send('inproc://test', 'Hello World!', function (error, headers, body) {
                 assert(error);
                 assert(error.message === 'Error!');
-                testService.destroy();
+                testService.close();
                 next();
             });
         });
