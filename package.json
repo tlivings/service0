@@ -15,7 +15,7 @@
     "node" : "0.10.x"
   },
   "dependencies" : {
-	  "zmq" : "~2.4.0",
+	  "zmq" : "~2.5 .0",
 	  "msgpack" : "~0.1.10",
 	  "json-schema" : "*",
 	  "uuid" : "*"

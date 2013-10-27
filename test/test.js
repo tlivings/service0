@@ -1,18 +1,18 @@
 "use strict";
 
 var assert = require("assert"),
-	services = require("../index"),
-	zmq = require("zmq");
+	services = require("../index");
 
 describe("test", function() {
 
+    var testService;
+
 	before(function(next) {
+        testService = new services.Service();
 		next();
 	});
 
 	it("should send Hello to client", function(next) {
-
-		var testService = new services.Service();
 
 		testService.bind("inproc://test", function() {
 			var client = new services.Client();
