@@ -1,53 +1,53 @@
-"use strict";
+'use strict';
 
-var assert = require("assert"),
-	services = require("../index");
+var assert = require('assert'),
+    services = require('../index');
 
-describe("test", function() {
+describe('test', function () {
 
     var testService;
 
-	before(function(next) {
+    before(function (next) {
         testService = new services.Service();
-		next();
-	});
+        next();
+    });
 
-	it("should send Hello to client", function(next) {
+    it('should send Hello to client', function (next) {
 
-		testService.bind("inproc://test", function() {
-			var client = new services.Client();
-
-			client.send("inproc://test", "Hello World!", function(error, headers, body) {
-				assert(!error);
-                assert(body === "Hello");
-				testService.destroy();
-				next();
-			});
-		});
-
-        testService.on("message", function(headers, body, callback) {
-            callback(null, "Hello");
-        });
-
-	});
-
-    it("should send error to client", function(next) {
-
-        var testService = new services.Service();
-
-        testService.bind("inproc://test", function() {
+        testService.bind('inproc://test', function () {
             var client = new services.Client();
 
-            client.send("inproc://test", "Hello World!", function(error, headers, body) {
-                assert(error);
-                assert(error.message === "Error!");
+            client.send('inproc://test', 'Hello World!', function (error, headers, body) {
+                assert(!error);
+                assert(body === 'Hello');
                 testService.destroy();
                 next();
             });
         });
 
-        testService.on("message", function(headers, body, callback) {
-            callback("Error!");
+        testService.on('message', function (headers, body, callback) {
+            callback(null, 'Hello');
+        });
+
+    });
+
+    it('should send error to client', function (next) {
+
+        var testService = new services.Service();
+
+        testService.bind('inproc://test', function () {
+            var client = new services.Client();
+
+            client.send('inproc://test', 'Hello World!', function (error, headers, body) {
+                assert(error);
+                assert(error.message === 'Error!');
+                testService.destroy();
+                next();
+            });
+        });
+
+        testService.on('message', function (headers, body, callback) {
+            callback('Error!');
         });
 
     });
