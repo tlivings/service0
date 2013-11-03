@@ -9,23 +9,24 @@ describe('test', function () {
 
     before(function (next) {
         testService = new services.Service();
+
         broker = new services.Broker();
 
-        broker.bind('inproc://broker', function (address) {
-            testService.connect(address);
+        broker.bind({ address : 'tcp://*:3000', bindAddress : 'inproc://worker'});
 
-            testService.on('message', function (headers, body, callback) {
-                callback(null, 'Hello');
-            });
+        testService.connect('inproc://worker');
 
-            next();
+        testService.on('message', function (headers, body, callback) {
+            callback(null, 'Hello');
         });
+
+        next();
     });
 
     it('should send Hello to client', function (next) {
         var client = new services.Client();
 
-        client.send('inproc://broker', 'Hello World!', function (error, headers, body) {
+        client.send('tcp://127.0.0.1:3000', 'Hello World!', function (error, headers, body) {
             assert(!error);
             assert(body === 'Hello');
             testService.close();
