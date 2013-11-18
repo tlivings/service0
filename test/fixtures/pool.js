@@ -1,8 +1,7 @@
 'use strict';
 
 var service0 = require('../../index'),
-    cluster = require('cluster'),
-    os = require('os');
+    cluster = require('cluster');
 
 var broker, service;
 
@@ -14,7 +13,7 @@ if (cluster.isMaster) {
 
     console.log('Started broker.');
 
-    for(var i=1; i < os.cpus().length; i++) {
+    for (var i = 1; i < 7; i++) {
         cluster.fork();
     }
 }

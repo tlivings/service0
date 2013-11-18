@@ -17,11 +17,7 @@ var server = http.createServer(function (req, res) {
         res.end('Result: '+body.result);
     });
 
-//    res.writeHead(200);
-//    res.end('Result: '+listPrimes(500));
-
-//
-//    var request = http.get('http://localhost:8001', function (response) {
+//    var request = http.get('http://localhost:3001', function (response) {
 //        var chunks = [];
 //        response.on('data', function (chunk) {
 //            chunks.push(chunk);
@@ -39,23 +35,3 @@ var server = http.createServer(function (req, res) {
 server.listen(3000, function () {
     console.log('Listening on port 3000');
 });
-
-function listPrimes( nPrimes ) {
-    var primes = [];
-    for( var n = 2;  nPrimes > 0;  n++ ) {
-        if( isPrime(n) ) {
-            primes.push( n );
-            --nPrimes;
-        }
-    }
-    return primes;
-}
-
-function isPrime( n ) {
-    var max = Math.sqrt(n);
-    for( var i = 2;  i <= max;  i++ ) {
-        if( n % i === 0 )
-            return false;
-    }
-    return true;
-}
