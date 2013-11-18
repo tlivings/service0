@@ -12,9 +12,9 @@ describe('test', function () {
 
         broker = new services.Broker();
 
-        broker.bind({ address : 'tcp://*:3000', bindAddress : 'inproc://worker'});
+        broker.bind({ address : 'ipc://broker', bindAddress : 'ipc://worker'});
 
-        testService.connect('inproc://worker');
+        testService.connect('ipc://worker');
 
         testService.on('message', function (headers, body, callback) {
             callback(null, 'Hello');
@@ -26,7 +26,7 @@ describe('test', function () {
     it('should send Hello to client', function (next) {
         var client = new services.Client();
 
-        client.send('tcp://127.0.0.1:3000', 'Hello World!', function (error, headers, body) {
+        client.send('ipc://broker', 'Hello World!', function (error, headers, body) {
             assert(!error);
             assert(body === 'Hello');
             testService.close();

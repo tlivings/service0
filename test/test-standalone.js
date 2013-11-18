@@ -8,7 +8,7 @@ describe('test', function () {
     var testService;
 
     before(function (next) {
-        testService = new services.Service();
+        testService = new services.Service({ msgpack: true });
 
         testService.bind('inproc://test', function () {
             testService.on('message', function (headers, body, callback) {
@@ -21,7 +21,8 @@ describe('test', function () {
     it('should send Hello to client', function (next) {
 
         var client = new services.Client({
-            keepalive : true
+            keepalive : true,
+            msgpack : true
         });
 
         client.send('inproc://test', 'Hello World!', function (error, headers, body) {
