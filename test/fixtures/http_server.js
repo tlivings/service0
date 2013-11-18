@@ -1,11 +1,12 @@
 'use strict';
 
-var zmqsi = require('../../index'),
+var service0 = require('../../index'),
     http = require('http');
 
 var server = http.createServer(function (req, res) {
-    var client = new zmqsi.Client();
-    client.send('tcp://localhost:3000', { number : 9999 }, function (error, headers, body) {
+    var client = service0.client();
+
+    client.send('ipc://broker', { number : 9999 }, function (error, headers, body) {
         if (error || headers.error) {
             res.writeHead(500);
             res.end(error || headers.error);
@@ -35,7 +36,9 @@ var server = http.createServer(function (req, res) {
 //    request.end();
 });
 
-server.listen(8000);
+server.listen(3000, function () {
+    console.log('Listening on port 3000');
+});
 
 function listPrimes( nPrimes ) {
     var primes = [];

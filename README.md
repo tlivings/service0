@@ -18,7 +18,7 @@ brew install zeromq
 
 Created with `service0.service(options, fn)`.
 
-- `options.msgpack` - use [msgpack](http://msgpack.org/).
+- `options` - no available options as of now.
 - `fn` - service function of the form `function (headers, body, callback)`.
 
 #### API
@@ -31,7 +31,6 @@ Created with `service0.service(options, fn)`.
 
 Created with `service0.client(options)`.
 
-- `options.msgpack` - use [msgpack](http://msgpack.org/).
 - `options.keepalive` - keep socket open until explicitly closed.
 
 #### API

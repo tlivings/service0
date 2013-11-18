@@ -1,23 +1,26 @@
 'use strict';
 
-var zmqsi = require('../../index');
+var service0 = require('../../index'),
+    cluster = require('cluster'),
+    os = require('os');
 
-var workers = [];
+var broker, service;
 
-var broker = new zmqsi.Broker();
+if (cluster.isMaster) {
+    broker = service0.broker({
+        address : 'ipc://broker',
+        broadcast : 'ipc://workers'
+    });
 
-var options = {
-    address : 'tcp://*:3000',
-    bindAddress : 'inproc://workers'
-};
+    console.log('Started broker.');
 
-broker.bind(options);
-
-for (var i = 0; i < 500; i++) {
-    var service = new zmqsi.Service();
-    service.on('message', _work);
-    service.connect('inproc://workers');
-    workers.push(service);
+    for(var i=1; i < os.cpus().length; i++) {
+        cluster.fork();
+    }
+}
+else {
+    service = service0.service(_work).connect('ipc://workers');
+    console.log('Started worker.');
 }
 
 function _work (headers, body, callback) {
@@ -38,8 +41,9 @@ function listPrimes( nPrimes ) {
 function isPrime( n ) {
     var max = Math.sqrt(n);
     for( var i = 2;  i <= max;  i++ ) {
-        if( n % i === 0 )
+        if( n % i === 0 ) {
             return false;
+        }
     }
     return true;
 }

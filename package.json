@@ -12,7 +12,6 @@
   },
   "dependencies" : {
 	  "zmq" : "~2.5.x",
-	  "msgpack" : "~0.1.x",
 	  "uuid" : "*"
   },
   "devDependencies" : {
