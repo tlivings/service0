@@ -8,7 +8,7 @@ Install [zeromq](http://www.zeromq.org/intro:get-the-software) first.
 
 Can also be installed using [homebrew](http://brew.sh/) on OS X.
 
-```bash
+```shell
 brew install zeromq
 ```
 
