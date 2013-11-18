@@ -1,11 +1,7 @@
 {
-  "zmqsi" : "zmqsi",
+  "zmqsi" : "callmemaybe",
   "version" : "0.1.0",
-  "private" : true,
-  "author" : { 
-    "zmqsi" : "Trevor Livingston",
-    "email" : "tlivings@gmail.com"
-  },
+  "author" : "Trevor Livingston <tlivings@gmail.com>",
   "repository" : { 
     "type" : "git",
     "url" : "http://github.com/trlivingston/zmqsi.git"
@@ -17,7 +13,6 @@
   "dependencies" : {
 	  "zmq" : "~2.5 .0",
 	  "msgpack" : "~0.1.10",
-	  "json-schema" : "*",
 	  "uuid" : "*"
   },
   "devDependencies" : {
