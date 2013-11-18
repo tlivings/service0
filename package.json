@@ -4,9 +4,9 @@
   "author" : "Trevor Livingston <tlivings@gmail.com>",
   "repository" : { 
     "type" : "git",
-    "url" : "http://github.com/trlivingston/zmqsi.git"
+    "url" : "http://github.com/tlivings/zmqsi.git"
   },
-  "bugs" : "http://github.com/trlivingston/zmqsi/issues",
+  "bugs" : "http://github.com/tlivings/zmqsi/issues",
   "engines" : {
     "node" : "0.10.x"
   },
