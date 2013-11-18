@@ -1,5 +1,5 @@
 {
-  "zmqsi" : "callmemaybe",
+  "zmqsi" : "zmqsi",
   "version" : "0.1.0",
   "author" : "Trevor Livingston <tlivings@gmail.com>",
   "repository" : { 
