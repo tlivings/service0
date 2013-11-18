@@ -1,18 +1,18 @@
 'use strict';
 
 var assert = require('assert'),
-    services = require('../index');
+    service0 = require('../index');
 
 describe('test', function () {
 
     var broker, testService;
 
     before(function (next) {
-        testService = services.service(function (headers, body, callback) {
+        testService = service0.service(function (headers, body, callback) {
             callback(null, 'Hello');
         });
 
-        services.broker({ address : 'ipc://broker', broadcast : 'ipc://worker'});
+        service0.broker({ address : 'ipc://broker', broadcast : 'ipc://worker'});
 
         testService.connect('ipc://worker');
 
@@ -20,7 +20,7 @@ describe('test', function () {
     });
 
     it('should send Hello to client', function (next) {
-        var client = services.client();
+        var client = service0.client();
 
         client.send('ipc://broker', 'Hello World!', function (error, headers, body) {
             assert(!error);

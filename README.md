@@ -1,4 +1,4 @@
-# ZMQSI
+# Service0
 
 A very simple API for RPC over [zeromq](http://www.zeromq.org/intro:get-the-software).
 
@@ -16,7 +16,7 @@ brew install zeromq
 
 ### Service
 
-Created with `zmqsi.service(options, fn)`.
+Created with `service0.service(options, fn)`.
 
 - `options.msgpack` - use [msgpack](http://msgpack.org/).
 - `fn` - service function of the form `function (headers, body, callback)`.
@@ -29,7 +29,7 @@ Created with `zmqsi.service(options, fn)`.
 
 ### Client
 
-Created with `zmqsi.client(options)`.
+Created with `service0.client(options)`.
 
 - `options.msgpack` - use [msgpack](http://msgpack.org/).
 - `options.keepalive` - keep socket open until explicitly closed.
@@ -41,7 +41,7 @@ Created with `zmqsi.client(options)`.
 
 ### Broker
 
-Created with `zmqsi.broker(options)`.
+Created with `service0.broker(options)`.
 
 - `options.address` - broker address.
 - `options.broadcast` - broadcast address for workers / services to listen on.
@@ -56,15 +56,15 @@ Created with `zmqsi.broker(options)`.
 ### No Broker
 
 ```javascript
-var zmqsi = require('zmqsi');
+var service0 = require('service0');
 
 var service, client;
 
-service = zmqsi.service(function (headers, body, callback) {
+service = service0.service(function (headers, body, callback) {
     callback(null, 'Hello');
 }).bind('inproc://test');
 
-client = zmqsi.client(options);
+client = service0.client(options);
 
 client.send('inproc://test', 'Hello World!', function (error, headers, body) {
     console.log(body);
@@ -74,17 +74,17 @@ client.send('inproc://test', 'Hello World!', function (error, headers, body) {
 ### Broker
 
 ```javascript
-var zmqsi = require('zmqsi');
+var service0 = require('service0');
 
 var broker, service, client;
 
-broker = zmqsi.broker({ address : 'ipc://broker', broadcast : 'ipc://worker'});
+broker = service0.broker({ address : 'ipc://broker', broadcast : 'ipc://worker'});
 
-service = zmqsi.service(function (headers, body, callback) {
+service = service0.service(function (headers, body, callback) {
     callback(null, 'Hello');
 }).connect('ipc://worker');
 
-client = zmqsi.client();
+client = service0.client();
 
 client.send('ipc://broker', 'Hello World!', function (error, headers, body) {
     console.log(body);

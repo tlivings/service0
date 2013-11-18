@@ -1,14 +1,14 @@
 'use strict';
 
 var assert = require('assert'),
-    services = require('../index');
+    service0 = require('../index');
 
 describe('test', function () {
 
     var testService;
 
     before(function (next) {
-        testService = services.service({ msgpack: true }, function (headers, body, callback) {
+        testService = service0.service({ msgpack: true }, function (headers, body, callback) {
             callback(null, 'Hello');
         });
 
@@ -19,7 +19,7 @@ describe('test', function () {
 
     it('should send Hello to client', function (next) {
 
-        var client = services.client({
+        var client = service0.client({
             keepalive : true,
             msgpack : true
         });

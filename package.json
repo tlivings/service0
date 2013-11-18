@@ -1,12 +1,12 @@
 {
-  "name" : "zmqsi",
+  "name" : "service0",
   "version" : "0.1.0",
   "author" : "Trevor Livingston <tlivings@gmail.com>",
   "repository" : { 
     "type" : "git",
-    "url" : "http://github.com/tlivings/zmqsi.git"
+    "url" : "http://github.com/tlivings/service0.git"
   },
-  "bugs" : "http://github.com/tlivings/zmqsi/issues",
+  "bugs" : "http://github.com/tlivings/service0/issues",
   "engines" : {
     "node" : "~0.10.x"
   },
