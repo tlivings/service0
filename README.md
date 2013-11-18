@@ -1,7 +1,16 @@
 # ZMQSI
 
-A very simple API for RPC over zeromq.
+A very simple API for RPC over [zeromq](http://www.zeromq.org/intro:get-the-software).
 
+# Setup
+
+Install [zeromq](http://www.zeromq.org/intro:get-the-software) first.
+
+Can also be installed using [homebrew](http://brew.sh/) on OS X.
+
+```bash
+brew install zeromq
+```
 
 # API
 

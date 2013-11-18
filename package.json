@@ -8,11 +8,11 @@
   },
   "bugs" : "http://github.com/tlivings/zmqsi/issues",
   "engines" : {
-    "node" : "0.10.x"
+    "node" : "~0.10.x"
   },
   "dependencies" : {
-	  "zmq" : "~2.5 .0",
-	  "msgpack" : "~0.1.10",
+	  "zmq" : "~2.5.x",
+	  "msgpack" : "~0.1.x",
 	  "uuid" : "*"
   },
   "devDependencies" : {
