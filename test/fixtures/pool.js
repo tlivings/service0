@@ -22,7 +22,7 @@ else {
     console.log('Started worker.');
 }
 
-function _work (headers, body, callback) {
+function _work(body, callback) {
     callback(null, { result : listPrimes(body.number)});
 }
 

@@ -10,8 +10,21 @@ if (cluster.isMaster) {
 }
 else {
     var server = http.createServer(function (req, res) {
-        res.writeHead(200);
-        res.end('Result: ' + listPrimes(9999));
+        if (req.method === 'POST') {
+            var body = '';
+            req.on('data', function (data) {
+                body += data;
+            });
+            req.on('end', function () {
+                body = JSON.parse(body);
+                res.writeHead(200);
+                res.end('Result: ' + listPrimes(body.number));
+            });
+        }
+        else {
+            res.writeHead(500);
+            res.end();
+        }
     });
 
     server.listen(3001, function () {
