@@ -65,6 +65,7 @@ server.listen(3000, function () {
 
     suite.on('complete', function () {
         console.log('Fastest is ' + this.filter('fastest').pluck('name'));
+        process.exit(0);
     });
 
 

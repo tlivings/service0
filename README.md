@@ -11,7 +11,7 @@ Install [zeromq](http://www.zeromq.org/intro:get-the-software) first.
 
 Can also be installed using [homebrew](http://brew.sh/) on OS X.
 
-```shell
+```bash
 brew install zeromq
 ```
 
@@ -22,7 +22,7 @@ brew install zeromq
 Created with `service0.service(options, fn)`.
 
 - `options` - no available options as of now.
-- `fn` - service function of the form `function (headers, body, callback)`.
+- `fn` - service function of the form `function (body, callback)`.
 
 #### API
 
@@ -38,7 +38,7 @@ Created with `service0.client(options)`.
 
 #### API
 
-- `client.send(address, message, callback)` - send the given message. `callback` is of the form `function (message)`.
+- `client.send(address, message, callback)` - send the given message. `callback` is of the form `function (error, message)`.
 - `client.close` - closes the socket (if open).
 
 ### Broker
@@ -91,4 +91,10 @@ client = service0.client();
 client.send('ipc://broker', 'Hello World!', function (message) {
     console.log(message);
 });
+```
+
+# Benchmarks
+
+```bash
+npm run benchmark
 ```

@@ -19,7 +19,8 @@
       "benchmark": "*"
   },
   "scripts" : {
-    "test" : "make test"
+      "test": "make test",
+      "benchmark": "node test/benchmarks/benchmark.js"
   },
   "main" : "./index.js",
   "readme" : "README.md",
