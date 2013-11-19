@@ -98,7 +98,7 @@ client.send('ipc://broker', 'Hello World!', function (message) {
 ```bash
 $ npm run benchmark
 
-> service0@0.1.0 benchmark /home/trlivingston/Development/Node/service0
+> service0@0.1.0 benchmark /home/tlivings/dev/service0
 > node test/benchmarks/benchmark.js
 
 service0 x 519 ops/sec ±1.62% (85 runs sampled)
