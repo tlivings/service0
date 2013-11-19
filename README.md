@@ -2,6 +2,9 @@
 
 A very simple API for RPC over [zeromq](http://www.zeromq.org/intro:get-the-software).
 
+This API is meant to serve as the bare-minimum RPC invocation, with the expectation that additional layers might
+be provided on top of it.
+
 # Setup
 
 Install [zeromq](http://www.zeromq.org/intro:get-the-software) first.
