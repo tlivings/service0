@@ -26,7 +26,7 @@ Created with `service0.service(options, fn)`.
 
 #### API
 
-- `bind(address, callback)` - bind to the given address, synchronously if the optional `callback` is not provided.
+- `bind(address, callback)` - bind to the given address, synchronously if the optional `callback` is not provided. `callback` is of the form `function (error, message)`.
 - `connect(address)` - connect to the given `address`.
 - `close` - closes the socket.
 
@@ -38,7 +38,7 @@ Created with `service0.client(options)`.
 
 #### API
 
-- `client.send(address, message, callback)` - send the given message. `callback` is of the form `function (error, headers, body)`.
+- `client.send(address, message, callback)` - send the given message. `callback` is of the form `function (message)`.
 - `client.close` - closes the socket (if open).
 
 ### Broker
@@ -62,14 +62,14 @@ var service0 = require('service0');
 
 var service, client;
 
-service = service0.service(function (headers, body, callback) {
+service = service0.service(function (message, callback) {
     callback(null, 'Hello');
 }).bind('inproc://test');
 
 client = service0.client(options);
 
-client.send('inproc://test', 'Hello World!', function (error, headers, body) {
-    console.log(body);
+client.send('inproc://test', 'Hello World!', function (message) {
+    console.log(message);
 });
 ```
 
@@ -82,13 +82,13 @@ var broker, service, client;
 
 broker = service0.broker({ address : 'ipc://broker', broadcast : 'ipc://worker'});
 
-service = service0.service(function (headers, body, callback) {
+service = service0.service(function (message, callback) {
     callback(null, 'Hello');
 }).connect('ipc://worker');
 
 client = service0.client();
 
-client.send('ipc://broker', 'Hello World!', function (error, headers, body) {
-    console.log(body);
+client.send('ipc://broker', 'Hello World!', function (message) {
+    console.log(message);
 });
 ```
