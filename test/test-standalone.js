@@ -9,7 +9,7 @@ describe('test', function () {
     var testService;
 
     before(function (next) {
-        testService = service0.service(function (headers, body, callback) {
+        testService = service0.service(function (message, callback) {
             callback(null, 'Hello');
         });
 
@@ -22,9 +22,8 @@ describe('test', function () {
 
         var client = service0.client();
 
-        client.send('inproc://test', 'Hello World!', function (error, headers, body) {
-            assert(!error);
-            assert(body === 'Hello');
+        client.send('inproc://test', 'Hello World!', function (message) {
+            assert(message === 'Hello');
             testService.close();
             next();
         });

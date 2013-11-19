@@ -8,7 +8,7 @@ describe('test', function () {
     var broker, testService;
 
     before(function (next) {
-        testService = service0.service(function (headers, body, callback) {
+        testService = service0.service(function (message, callback) {
             callback(null, 'Hello');
         });
 
@@ -22,9 +22,8 @@ describe('test', function () {
     it('should send Hello to client', function (next) {
         var client = service0.client();
 
-        client.send('ipc://broker', 'Hello World!', function (error, headers, body) {
-            assert(!error);
-            assert(body === 'Hello');
+        client.send('ipc://broker', 'Hello World!', function (message) {
+            assert(message === 'Hello');
             testService.close();
             next();
         });
