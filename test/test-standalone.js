@@ -1,7 +1,8 @@
 'use strict';
 
 var assert = require('assert'),
-    service0 = require('../index');
+    service0 = require('../index'),
+    zmq = require('zmq');
 
 describe('test', function () {
 
