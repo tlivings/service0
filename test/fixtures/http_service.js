@@ -4,7 +4,7 @@ var cluster = require('cluster'),
     http = require('http');
 
 if (cluster.isMaster) {
-    for (var i = 1; i < 8; i++) {
+    for (var i = 1; i <= require('os').cpus().length; i++) {
         cluster.fork();
     }
 }

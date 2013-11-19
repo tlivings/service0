@@ -13,7 +13,7 @@ if (cluster.isMaster) {
 
     console.log('Started broker.');
 
-    for (var i = 1; i < 7; i++) {
+    for (var i = 1; i <= require('os').cpus().length; i++) {
         cluster.fork();
     }
 }
