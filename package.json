@@ -15,7 +15,8 @@
 	  "uuid" : "*"
   },
   "devDependencies" : {
-    "mocha" : "*"
+      "mocha": "*",
+      "benchmark": "*"
   },
   "scripts" : {
     "test" : "make test"
