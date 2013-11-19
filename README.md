@@ -95,6 +95,10 @@ client.send('ipc://broker', 'Hello World!', function (message) {
 
 # Benchmarks
 
+Benchmarks are testing `http` vs `service0`.
+
+For each protocol, there is a service that calculates the first 300 prime numbers and returns the result.
+
 ```bash
 $ npm run benchmark
 
