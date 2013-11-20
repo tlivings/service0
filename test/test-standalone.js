@@ -30,7 +30,6 @@ describe('test', function () {
         client.send('inproc://test', 'Hello World!', function (error, message) {
             assert(!error);
             assert(message === 'Hello');
-            testService.close();
             next();
         });
 
@@ -45,10 +44,14 @@ describe('test', function () {
             assert(typeof error === 'object');
             assert(error.name === 'Error');
             assert(error.message === 'bad!');
-            testService.close();
             next();
         });
 
+    });
+
+    it('should disconnect service', function (next) {
+        testService.disconnect('inproc://test');
+        next();
     });
 
 });
