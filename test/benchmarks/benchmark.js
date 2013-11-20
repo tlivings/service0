@@ -24,7 +24,6 @@ var server = http.createServer(function (req, res) {
 
 server.listen(3000, function () {
 
-
     suite.add('service0', {
         'id': 'service0',
         'fn': function (deferred) {

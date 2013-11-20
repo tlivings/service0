@@ -9,12 +9,12 @@ var server = http.createServer(function (req, res) {
     client.send('ipc://broker', { number: 300 }, function (error, body) {
         if (error) {
             res.writeHead(500);
-            res.end(error || headers.error);
+            res.end(error);
             return;
         }
 
         res.writeHead(200);
-        res.end('Result: '+body.result);
+        res.end('Result: ' + body.result);
     });
 
 //    var options = {
