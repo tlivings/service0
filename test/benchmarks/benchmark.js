@@ -8,7 +8,7 @@ var service0 = require('../../index');
 
 var service = service0.service(function (message, callback) {
     callback(null, listPrimes(message.n));
-}).bind('ipc://service');
+}).bind('tcp://*:3001');
 
 var server = http.createServer(function (req, res) {
     var body = '';
@@ -27,7 +27,7 @@ server.listen(3000, function () {
     suite.add('service0', {
         'id': 'service0',
         'fn': function (deferred) {
-            service0.client().send('ipc://service', {n: 300}, function (error, message) {
+            service0.client().send('tcp://localhost:3001', {n: 300}, function (error, message) {
                 return deferred.resolve();
             });
         },
