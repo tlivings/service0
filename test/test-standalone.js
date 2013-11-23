@@ -49,9 +49,4 @@ describe('test', function () {
 
     });
 
-    it('should disconnect service', function (next) {
-        testService.disconnect('inproc://test');
-        next();
-    });
-
 });

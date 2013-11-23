@@ -19,9 +19,8 @@ brew install zeromq
 
 ### Service
 
-Created with `service0.service(options, fn)`.
+Created with `service0.service(fn)`.
 
-- `options` - no available options as of now.
 - `fn` - service function of the form `function (body, callback)`.
 
 #### API
