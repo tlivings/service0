@@ -11,8 +11,7 @@
     "node" : "~0.10.x"
   },
   "dependencies" : {
-	  "zmq" : "~2.5.x",
-	  "uuid" : "*"
+	  "zmq" : "~2.5.x"
   },
   "devDependencies" : {
       "mocha": "*",

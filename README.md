@@ -27,18 +27,16 @@ Created with `service0.service(fn)`.
 
 - `bind(address, callback)` - bind to the given address, synchronously if the optional `callback` is not provided. `callback` is of the form `function (error, message)`.
 - `connect(address)` - connect to the given `address`.
+- `disconnect(address)` - disconnects from the given `address`.
 - `close` - closes the socket.
 
 ### Client
 
 Created with `service0.client(options)`.
 
-- `options.keepalive` - keep socket open until explicitly closed.
-
 #### API
 
 - `client.send(address, message, callback)` - send the given message. `callback` is of the form `function (error, message)`.
-- `client.close` - closes the socket (if open).
 
 ### Broker
 
@@ -65,7 +63,7 @@ service = service0.service(function (message, callback) {
     callback(null, 'Hello');
 }).bind('inproc://test');
 
-client = service0.client(options);
+client = service0.client();
 
 client.send('inproc://test', 'Hello World!', function (message) {
     console.log(message);
