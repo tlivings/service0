@@ -18,7 +18,7 @@ describe('test', function () {
             }
         });
 
-        testService.bind('inproc://test');
+        testService.bindSync('inproc://test');
 
         next();
     });

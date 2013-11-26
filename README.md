@@ -17,26 +17,21 @@ brew install zeromq
 
 # API
 
-### Service
+Sockets created are 0mq sockets as per [zeromq.node](https://github.com/JustinTulloss/zeromq.node).
+
+### Service Socket
 
 Created with `service0.service(fn)`.
 
 - `fn` - service function of the form `function (body, callback)`.
 
-#### API
-
-- `bind(address, callback)` - bind to the given address, synchronously if the optional `callback` is not provided. `callback` is of the form `function (error, message)`.
-- `connect(address)` - connect to the given `address`.
-- `disconnect(address)` - disconnects from the given `address`.
-- `close` - closes the socket.
-
-### Client
+### Client Socket
 
 Created with `service0.client(options)`.
 
 #### API
 
-- `client.send(address, message, callback)` - send the given message. `callback` is of the form `function (error, message)`.
+- `client.send(message, callback)` - send the given message. `callback` is of the form `function (error, message)`.
 
 ### Broker
 
@@ -48,7 +43,7 @@ Created with `service0.broker(options)`.
 #### API
 
 - `close` - closes the broker sockets.
-
+- `disconnect` - disconnects the broker sockets.
 
 # Examples
 
@@ -61,11 +56,11 @@ var service, client;
 
 service = service0.service(function (message, callback) {
     callback(null, 'Hello');
-}).bind('inproc://test');
+}).bindSync('inproc://test');
 
-client = service0.client();
+client = service0.client('inproc://test');
 
-client.send('inproc://test', 'Hello World!', function (message) {
+client.send('Hello World!', function (message) {
     console.log(message);
 });
 ```
@@ -83,9 +78,9 @@ service = service0.service(function (message, callback) {
     callback(null, 'Hello');
 }).connect('ipc://worker');
 
-client = service0.client();
+client = service0.client('ipc://broker');
 
-client.send('ipc://broker', 'Hello World!', function (message) {
+client.send('Hello World!', function (message) {
     console.log(message);
 });
 ```
