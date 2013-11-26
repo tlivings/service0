@@ -25,9 +25,9 @@ describe('test', function () {
 
     it('should send Hello to client', function (next) {
 
-        var client = service0.client();
+        var client = service0.client('inproc://test');
 
-        client.send('inproc://test', 'Hello World!', function (error, message) {
+        client.send('Hello World!', function (error, message) {
             assert(!error);
             assert(message === 'Hello');
             next();
@@ -37,9 +37,9 @@ describe('test', function () {
 
     it('should send error to client', function (next) {
 
-        var client = service0.client();
+        var client = service0.client('inproc://test');
 
-        client.send('inproc://test', 'error', function (error, message) {
+        client.send('error', function (error, message) {
             assert(error);
             assert(typeof error === 'object');
             assert(error.name === 'Error');

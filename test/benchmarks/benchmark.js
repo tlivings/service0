@@ -27,7 +27,9 @@ server.listen(3000, function () {
     suite.add('service0', {
         'id': 'service0',
         'fn': function (deferred) {
-            service0.client().send('tcp://localhost:3001', {n: 300}, function (error, message) {
+            var client = service0.client('tcp://localhost:3001');
+            client.send({n: 300}, function (error, message) {
+                client.close();
                 return deferred.resolve();
             });
         },

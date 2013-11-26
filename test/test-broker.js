@@ -20,9 +20,9 @@ describe('test', function () {
     });
 
     it('should send Hello to client', function (next) {
-        var client = service0.client();
+        var client = service0.client('ipc://broker');
 
-        client.send('ipc://broker', 'Hello World!', function (error, message) {
+        client.send('Hello World!', function (error, message) {
             assert(!error);
             assert(message === 'Hello');
             testService.close();
